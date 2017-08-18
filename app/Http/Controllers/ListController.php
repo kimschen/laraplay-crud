@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\PostList;
 
 class ListController extends Controller
 {
@@ -34,7 +35,13 @@ class ListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $list = new PostList ([
+            'title' => $request->get('title'),
+            'post'  => $request->get('post')
+        ]);
+
+        $list->save();
+        return redirect('/list');
     }
 
     /**

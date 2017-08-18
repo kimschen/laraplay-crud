@@ -2,7 +2,8 @@
 @section('content')
 <div class="container">
 	<form>
-		<div class="form-group row">
+		<div class="form-group row" action="{{url('list')}}">
+			{{csrf_field()}}
 			<label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">
 				Title
 			</label>
