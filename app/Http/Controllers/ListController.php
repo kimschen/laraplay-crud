@@ -95,6 +95,9 @@ class ListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $lists = Post::find($id);
+        $lists->delete();
+
+        return redirect('/list');
     }
 }
