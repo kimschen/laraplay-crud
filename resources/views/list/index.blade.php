@@ -16,6 +16,12 @@
 					<td>{{$post['id']}}</td>
 					<td>{{$post['title']}}</td>
 					<td>{{$post['post']}}</td>
+					<td>
+						<a href="{{ action('ListController@edit', $post['id']) }}">Edit</a>
+					</td>
+					<td>
+						<a href="{{ action('ListController@destroy', $post['id']) }}">Delete</a>
+					</td>
 				</tr>
 				@endforeach
 			</tbody>
