@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\PostList;
+use App\Post;
 
 class ListController extends Controller
 {
@@ -14,7 +14,9 @@ class ListController extends Controller
      */
     public function index()
     {
-        //
+        $lists = Post::all()->toArray();
+
+        return view('list.index', compact('lists'));
     }
 
     /**
@@ -35,7 +37,7 @@ class ListController extends Controller
      */
     public function store(Request $request)
     {
-        $list = new PostList ([
+        $list = new Post([
             'title' => $request->get('title'),
             'post'  => $request->get('post')
         ]);
