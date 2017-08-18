@@ -37,12 +37,12 @@ class ListController extends Controller
      */
     public function store(Request $request)
     {
-        $list = new Post([
+        $lists = new Post([
             'title' => $request->get('title'),
             'post'  => $request->get('post')
         ]);
 
-        $list->save();
+        $lists->save();
         return redirect('/list');
     }
 
@@ -65,7 +65,9 @@ class ListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $lists = Post::find($id);
+
+        return view('list.edit', compact('lists', 'id'));
     }
 
     /**
@@ -77,7 +79,12 @@ class ListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $lists = Post::find($id);
+        $lists->title = $request->get('title');
+        $lists->post = $request->get('post');
+        $lists->save();
+
+        return redirect('/list');
     }
 
     /**
